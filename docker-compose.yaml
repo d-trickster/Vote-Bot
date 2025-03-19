@@ -1,0 +1,19 @@
+services:
+  app:
+    image: vote-bot-image
+    container_name: vote-bot
+    restart: unless-stopped
+    volumes:
+      - ~/Work/vote_config.yaml:/app/config.yaml:ro,z
+      - vote_bot_data:/app/data
+      - vote_bot_logs:/app/logs
+    environment:
+      - BOT_TOKEN=
+
+volumes:
+  vote_bot_data:
+    name: vote-bot-data-vol
+    external: true
+  vote_bot_logs:
+    name: vote-bot-logs-vol
+    external: true
